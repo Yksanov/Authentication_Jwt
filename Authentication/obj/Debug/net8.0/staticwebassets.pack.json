@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Attractor\\month#2\\Authentication\\Authentication\\wwwroot\\login.html",
+      "PackagePath": "staticwebassets\\login.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Authentication.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Authentication.props",
+      "PackagePath": "build\\Authentication.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Authentication.props",
+      "PackagePath": "buildMultiTargeting\\Authentication.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Authentication.props",
+      "PackagePath": "buildTransitive\\Authentication.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

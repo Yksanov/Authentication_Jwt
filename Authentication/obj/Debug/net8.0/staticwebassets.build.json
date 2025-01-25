@@ -1,0 +1,39 @@
+{
+  "Version": 1,
+  "Hash": "HZDOgit2eitKvy1AddY7VjcfnC74QNERpagGJFj7jgY=",
+  "Source": "Authentication",
+  "BasePath": "_content/Authentication",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Authentication\\wwwroot",
+      "Source": "Authentication",
+      "ContentRoot": "D:\\Attractor\\month#2\\Authentication\\Authentication\\wwwroot\\",
+      "BasePath": "_content/Authentication",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\Attractor\\month#2\\Authentication\\Authentication\\wwwroot\\login.html",
+      "SourceId": "Authentication",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Attractor\\month#2\\Authentication\\Authentication\\wwwroot\\",
+      "BasePath": "_content/Authentication",
+      "RelativePath": "login.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\login.html"
+    }
+  ]
+}
