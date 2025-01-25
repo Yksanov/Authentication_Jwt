@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Login Page</title>
+</head>
+<body>
+
+<div id="loginForm">
+    <h3>Вход на сайт</h3>
+    <p>
+        <label for="name">Введите имя</label><br/>
+        <input type="text" id="name"/>
+    </p>
+    <p>
+        <label for="password">Введите пароль</label><br/>
+        <input type="password" id="password"/>
+    </p>
+    <input type="submit" id="submitLogin" value="Логин"/>
+</div>
+
+<div id="userInfo" style="display:none;">
+    <p>Добро пожаловать <span id="userName"></span>!</p>
+    <input type="button" value="Выйти" id="logOut"/>
+</div>
+
+<p>
+    <input type="submit" id="check" value="Проверить"/>
+</p>
+
+<script>
+    // Имя для локального хранения токена 
+    var tokenKey = "accessToken";
+    var userKey = "currentUser";
+
+    document.getElementById('submitLogin').addEventListener('click', async event => {
+        event.preventDefault(); // Предотвращаем отправку формы по умолчанию 
+
+        const data = {
+            username: document.getElementById('name').value,
+            password: document.getElementById('password').value
+        };
+
+        try {
+            const response = await fetch('/user/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok == true) {
+
+                const jsonResponse = await response.json();
+                console.log('Успешный ответ:', jsonResponse);
+                alert('Успешный вход!');
+                // Здесь можно выполнить другие действия после успешного входа 
+
+                // изменяем содержимое и видимость блоков на странице 
+                document.getElementById("userName").innerText = jsonResponse.user;
+                document.getElementById("userInfo").style.display = "block";
+                document.getElementById("loginForm").style.display = "none";
+
+                // сохраняем в хранилище sessionStorage токен доступа 
+                sessionStorage.setItem(tokenKey, jsonResponse.token);
+                sessionStorage.setItem(userKey, jsonResponse.user);
+            } else {
+                alert("Authorization error: ", response.status);
+                console.log("Status: ", response.status);
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+            alert('Ошибка входа!');
+            // Здесь можно выполнить другие действия при ошибке входа 
+        }
+    });
+
+    document.getElementById("check").addEventListener("click", async event => {
+        event.preventDefault();
+        // получаем токен из sessionStorage 
+        const token = sessionStorage.getItem(tokenKey);
+        // отправляем запрос к "/data 
+        const response = await fetch("/user/check", {
+            method: "GET",
+            headers: {
+                "Accept": "application/json",
+                "Authorization": "Bearer " + token  // передача токена в заголовке 
+            }
+        });
+
+        if (response.ok === true) {
+            const data = await response.text();
+            console.log(data);
+            alert(data);
+        } else
+            alert("User not authorized.\nResponse status: " + response.status);
+        console.log("Status: ", response.status);
+    });
+
+    // условный выход - просто удаляем токен и меняем видимость блоков 
+    document.getElementById("logOut").addEventListener("click", event => {
+        event.preventDefault();
+        document.getElementById("userName").innerText = "";
+        document.getElementById("userInfo").style.display = "none";
+        document.getElementById("loginForm").style.display = "block";
+        sessionStorage.removeItem(tokenKey);
+        sessionStorage.removeItem(userKey);
+    });
+
+    // если пользователь уже есть 
+    if (sessionStorage.getItem(tokenKey) !== null &&
+        sessionStorage.getItem(userKey) !== null) {
+        // изменяем содержимое и видимость блоков на странице 
+        document.getElementById("userName").innerText =
+            sessionStorage.getItem(userKey);
+        document.getElementById("userInfo").style.display = "block";
+        document.getElementById("loginForm").style.display = "none";
+    }
+</script>
+</body>
+</html>
