@@ -40,3 +40,4 @@ D:\Attractor\month#2\Authentication\Authentication\obj\Debug\net8.0\Authenticati
 D:\Attractor\month#2\Authentication\Authentication\obj\Debug\net8.0\Authentication.genruntimeconfig.cache
 D:\Attractor\month#2\Authentication\Authentication\obj\Debug\net8.0\ref\Authentication.dll
 D:\Attractor\month#2\Authentication\Authentication\bin\Debug\net8.0\Authentication.staticwebassets.runtime.json
+D:\Attractor\month#2\Authentication\Authentication\obj\Debug\net8.0\Authentication.sourcelink.json
